@@ -5,7 +5,7 @@ import os
 import json
 from pyquery import PyQuery
 
-from common import addToIDM
+from lib.common import addToIDM
 
 SAVE_PATH = 'e:\\Downloads\\_tmp'
 TO_JOIN_PATH = 'youku_to_join.json'

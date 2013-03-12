@@ -1,15 +1,19 @@
-# coding: utf-8
+# coding: gbk
 import re
 import os
 import time
 import argparse
-from urllib import urlencode
-# import urllib.parse
+
 from pyquery import PyQuery
 
-from common import addToIDM
+from lib.common import addToIDM, PY3k
 
-SAVE_PATH = 'e:\\Downloads\\_tmp'
+if PY3k:
+    from urllib.parse import urlencode
+else:
+    from urllib import urlencode
+
+SAVE_PATH = 'F:\\Downloads\\_tmp'
 BASE_URL = 'http://bbs.weiphone.com/'
 headers = {"Accept": "*/*", "Accept-Language": "zh-CN",
            "User-Agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
@@ -17,7 +21,7 @@ headers = {"Accept": "*/*", "Accept-Language": "zh-CN",
 
 
 def checkWefiler(d):
-    """æ£€æŸ¥è½¯ä»¶ä¸‹è½½é¡µé¢æ˜¯å¦æœ‰å¨é”‹ç›˜çš„é“¾æ¥
+    """¼ì²éÈí¼şÏÂÔØÒ³ÃæÊÇ·ñÓĞÍş·æÅÌµÄÁ´½Ó
     """
     links = d('a[href*="www.wefiler.com/#download"]').items()
     urls = []
@@ -34,7 +38,7 @@ def download(threadUrl):
     d = PyQuery(url=threadUrl, parser='soup')
     links = d('a[href^="job.php?action=download&aid="]')
 
-    # è·å– verify çš„å€¼
+    # »ñÈ¡ verify µÄÖµ
     tmp = d('script:contains("var verifyhash =")').text()
     verify = re.search(r"var verifyhash = '(.*?)'", tmp).group(1)
 
@@ -51,7 +55,7 @@ def download(threadUrl):
 
             print('  fetch: ' + url)
             downDoc = PyQuery(url, headers=headers)
-            # ç¬¬0ä¸ªæ˜¯ç”µä¿¡ä¸‹è½½ç‚¹ï¼Œç¬¬1ä¸ªæ˜¯ç§»åŠ¨ä¸‹è½½ç‚¹
+            # µÚ0¸öÊÇµçĞÅÏÂÔØµã£¬µÚ1¸öÊÇÒÆ¶¯ÏÂÔØµã
             downUrl = BASE_URL + downDoc('a[href^="remotedown.php"]').eq(1).attr('href')
             addToIDM(downUrl, SAVE_PATH, filename)
             time.sleep(1.5)
@@ -66,8 +70,8 @@ def main():
     #     http://bbs.weiphone.com/read-htm-tid-1726790.html
     # '''
 
-    parser = argparse.ArgumentParser(description='weiphone iPad ç”µå­ä¹¦èµ„æº æ‰¹é‡ä¸‹è½½')
-    parser.add_argument('urls', metavar='URL', nargs='+', help='è¯¥è®ºå›çš„ä¸€ä¸ªå¸–å­åœ°å€')
+    parser = argparse.ArgumentParser(description='weiphone iPad µç×ÓÊé×ÊÔ´ ÅúÁ¿ÏÂÔØ')
+    parser.add_argument('urls', metavar='URL', nargs='+', help='¸ÃÂÛÌ³µÄÒ»¸öÌû×ÓµØÖ·')
 
     args = parser.parse_args()
     if args.urls:
@@ -75,7 +79,6 @@ def main():
         for url in args.urls:
             print(url)
             download(url)
-
 
 if __name__ == '__main__':
     main()

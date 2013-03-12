@@ -5,7 +5,7 @@ import argparse
 from urllib.parse import urlparse, parse_qs
 from pyquery import PyQuery as pq
 
-from common import addToIDM
+from lib.common import addToIDM
 
 DOWN_PATH = 'e:\\Downloads\\itpub'
 reFileExt = re.compile('[(pdf)|(rar)|(doc)|(excel)|(chm)|(zip)|(7z)|\

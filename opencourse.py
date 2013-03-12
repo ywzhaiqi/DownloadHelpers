@@ -3,7 +3,7 @@ import os
 import argparse
 from pyquery import PyQuery
 
-from common import addToIDM
+from lib.common import addToIDM
 
 BASE_PATH = 'e:\\Downloads\\_tmp'
 

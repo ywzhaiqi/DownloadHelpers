@@ -1,26 +1,26 @@
-# 各个不同网站辅助下载脚本合集
+# 多个网站辅助下载脚本合集
 
 这些脚本都是我平时用到不断收集的，以Python为主，还包含js脚本。本人水平有限，希望共同探讨。
 **AutoHotkey 辅助合集**
 
 ## 需要
 
-- python >= 3
+- python
 - pyquery
 
 ## 分类
 
 ### verycd 下载
 
-- [verycd.user.js](verycd/verycd@ywzhaiqi@gmailcom.user.js)：直接在verycd页面显示下载链接
+- [verycd.user.js](verycd/verycd@ywzhaiqi@gmailcom.user.js)：直接在verycd页面显示ed2k链接
 - [verycd.py](verycd/verycd.py)：未完成。用上面的 GM 脚本替代。
 - [simplecd.py](verycd/simplecd.py): 可用
 
 ### 迅雷离线下载
 
-- [thunderlixianexporter](http://s.binux.me/TLE/master/ThunderLixianExporter)
-- [thunderassistant](http://userscripts.org/scripts/show/111748)
-    - 有时候有问题，一直在加载，点击没反应。由于jQuery库
+- [thunderlixianexporter.user.js](http://s.binux.me/TLE/master/ThunderLixianExporter)
+- [thunderassistant.user.js](http://userscripts.org/scripts/show/111748)
+    - 有时候有问题，显示一直在加载，点击没反应。由于jQuery库
 - [离线Python脚本](https://github.com/iambus/xunlei-lixian)
     - 自己修改添加了导出IDM下载文件，没有试用
 
@@ -30,7 +30,7 @@
 
 ### weiphone 论坛批量下载
 
-取得帖子的所有下载链接并添加到IDM，用的次数不多
+取得帖子的所有下载链接并添加到IDM，批量下载时很有用。
 
 ### 5tps 有声小说下载
 

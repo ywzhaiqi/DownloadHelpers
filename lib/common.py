@@ -3,8 +3,9 @@ import re
 import sys
 import subprocess
 
+from config import IDM_PATH
+
 PY3k = sys.version_info >= (3,)
-IDM_PATH = 'D:\\Program Files\\Internet Download Manager\\IDMan.exe'
 SUFFIXES = ['Byte', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB']
 
 if PY3k:
